@@ -1,0 +1,84 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:POOS}",
+            "name": "Debug ProjDia_4",
+            "target": "ProjDia_4",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug ProjDia_4"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:POOS}",
+            "name": "Release ProjDia_4",
+            "target": "ProjDia_4",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release ProjDia_4"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:POOS}",
+            "name": "Debug ProjDia_3",
+            "target": "ProjDia_3",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug ProjDia_3"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:POOS}",
+            "name": "Release ProjDia_3",
+            "target": "ProjDia_3",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release ProjDia_3"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:POOS}",
+            "name": "Debug ProjDia_2",
+            "target": "ProjDia_2",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug ProjDia_2"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:POOS}",
+            "name": "Release ProjDia_2",
+            "target": "ProjDia_2",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release ProjDia_2"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:POOS}",
+            "name": "Debug ProjDia_1",
+            "target": "ProjDia_1",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug ProjDia_1"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:POOS}",
+            "name": "Release ProjDia_1",
+            "target": "ProjDia_1",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release ProjDia_1"
+        }
+    ]
+}
