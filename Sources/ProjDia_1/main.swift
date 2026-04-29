@@ -1,5 +1,4 @@
-/*PROJETO DE POOS - Dia 1
-Aluna: Sarah Krybus Chalom*/
+/*PROJETO DE POOS - Dia 1*/
 
 // 1) Conjuntos Fechados
 enum NivelExperiencia {
