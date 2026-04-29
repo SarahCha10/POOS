@@ -98,7 +98,7 @@ class TurmaColetiva: Aula {
     }
 }
 
-// 5) Treino com Personal
+// 5) Treino com Personal herdada de Aula
 class TreinoPersonal: Aula {
 
     let nome: String
