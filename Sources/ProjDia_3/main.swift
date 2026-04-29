@@ -1,101 +1,110 @@
 /*PROJETO DE POOS - Dia 3*/
-
 import Foundation
 
-// 1)Protocolo Manutenção
-protocol Manutencao {
-    var nomeItem: String { get }
-    var historico: [String] { get }
+class Aluno {
+    var nome: String
+    var email: String
+    var planoPermitePersonal: Bool
     
-    func realizarReparo(data: String, regular: Bool)
+    init(nome: String, email: String, planoPermitePersonal: Bool) {
+        self.nome = nome
+        self.email = email
+        self.planoPermitePersonal = planoPermitePersonal
+    }
 }
 
-// 2) Equipamentos
-class Equipamento: Manutencao {
+class Instrutor {
+    var nome: String
+    var id: Int
     
-    var nomeItem: String
-    var historico: [String] = []
+    init(nome: String, id: Int) {
+        self.nome = nome
+        self.id = id
+    }
+}
+
+class Equipamento {
+    var nome: String
     var funcionando: Bool
     
-    init(nomeItem: String, funcionando: Bool) {
-        self.nomeItem = nomeItem
+    init(nome: String, funcionando: Bool) {
+        self.nome = nome
         self.funcionando = funcionando
     }
     
-    func realizarReparo(data: String, regular: Bool) {
+    func fazerManutencao() -> Bool {
         if funcionando == false {
-            print("Não foi possível fazer o reparo")
-        } else {
-            historico.append("Data: \(data) - Regular: \(regular)")
-            print("Reparo feito")
+            return false
         }
+        return true
     }
 }
 
-// 3) Protocolo Aula
-protocol Aula {
-    var nome: String { get }
-    var instrutor: String { get }
-    var categoria: String { get }
-    var descricao: String { get }
-}
-
-// 4) Turma Coletiva
-class TurmaColetiva: Aula {
+class Academia {
     
-    var nome: String
-    var instrutor: String
-    var categoria: String
-    var descricao: String
+    private var alunos: [String: Aluno] = [:]
+    private var instrutores: [Int: Instrutor] = [:]
+    private var equipamentos: [String: Equipamento] = [:]
     
-    var alunos: [String] = []
-    var capacidadeMin: Int
-    var capacidadeMax: Int
-    
-    init(nome: String, instrutor: String, categoria: String, descricao: String, capacidadeMin: Int, capacidadeMax: Int) {
-        self.nome = nome
-        self.instrutor = instrutor
-        self.categoria = categoria
-        self.descricao = descricao
-        self.capacidadeMin = capacidadeMin
-        self.capacidadeMax = capacidadeMax
+    func cadastrarAluno(aluno: Aluno) {
+        if alunos[aluno.email] != nil {
+            print("Aluno com esse email já existe")
+            return
+        }
+        alunos[aluno.email] = aluno
+        print("Aluno cadastrado com sucesso")
     }
     
-    func inscrever(aluno: String) {
-        if alunos.contains(aluno) {
-            print("Aluno já está na turma")
-        } else if alunos.count >= capacidadeMax {
-            print("Turma cheia")
+    func cadastrarInstrutor(instrutor: Instrutor) {
+        if instrutores[instrutor.id] != nil {
+            print("Instrutor já existe")
+            return
+        }
+        instrutores[instrutor.id] = instrutor
+        print("Instrutor cadastrado")
+    }
+    
+    func cadastrarEquipamento(equipamento: Equipamento) {
+        equipamentos[equipamento.nome] = equipamento
+    }
+    
+    func manutencaoGeral() {
+        var falhas: [String] = []
+        
+        for (nome, equipamento) in equipamentos {
+            let sucesso = equipamento.fazerManutencao()
+            
+            if sucesso == false {
+                falhas.append(nome)
+            }
+        }
+        
+        if falhas.isEmpty {
+            print("Todos os equipamentos estão OK")
         } else {
-            alunos.append(aluno)
-            print("Aluno inscrito")
+            print("Equipamentos com falha:")
+            for nome in falhas {
+                print(nome)
+            }
         }
     }
-}
-
-// 5) Treino com Personal
-class TreinoPersonal: Aula {
     
-    var nome: String
-    var instrutor: String
-    var categoria: String
-    var descricao: String
-    
-    var aluno: String?
-    
-    init(nome: String, instrutor: String, categoria: String, descricao: String) {
-        self.nome = nome
-        self.instrutor = instrutor
-        self.categoria = categoria
-        self.descricao = descricao
-    }
-    
-    func adicionarAluno(nome: String) {
-        if aluno == nil {
-            aluno = nome
-            print("Aluno adicionado")
-        } else {
-            print("Já existe aluno nesse treino")
+    func agendarPersonal(emailAluno: String, idInstrutor: Int) {
+        guard let aluno = alunos[emailAluno] else {
+            print("Aluno não encontrado")
+            return
         }
+        
+        guard let instrutor = instrutores[idInstrutor] else {
+            print("Instrutor não encontrado")
+            return
+        }
+        
+        if aluno.planoPermitePersonal == false {
+            print("Plano do aluno não permite personal")
+            return
+        }
+        
+        print("Agendamento realizado entre \(aluno.nome) e \(instrutor.nome)")
     }
 }
