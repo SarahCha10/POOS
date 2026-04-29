@@ -15,6 +15,12 @@ let package = Package(
         .executableTarget(
             name: "ProjDia_2"
         ),
+        .executableTarget(
+            name: "ProjDia_3"
+        ),
+        .executableTarget(
+            name: "ProjDia_4"
+        )
     ]
 )
 
