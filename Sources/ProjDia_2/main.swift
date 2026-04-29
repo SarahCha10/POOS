@@ -1,5 +1,7 @@
+/*PROJETO DE POOS - Dia 2*/
 import Foundation
 
+// 1) Protocolo Manutenção
 protocol Manutencao {
     var nomeMaquina: String { get }
     var historicoMaquina: [String] { get }
@@ -8,6 +10,7 @@ protocol Manutencao {
     func estaEmDia() -> Bool
 }
 
+// 2) Entidade Manutenção
 class Aparelho: Manutencao {
 
     let nomeMaquina: String
@@ -42,6 +45,7 @@ class Aparelho: Manutencao {
     }
 }
 
+// 3) Protocolo Aula
 protocol Aula {
     var nome: String { get }
     var instrutor: String { get }
@@ -49,6 +53,7 @@ protocol Aula {
     var descricao: String { get }
 }
 
+// 4) Entidade Turma Coletiva
 class TurmaColetiva: Aula {
 
     let nome: String
@@ -92,6 +97,7 @@ class TurmaColetiva: Aula {
     }
 }
 
+// 5) Treino com Personal
 class TreinoPersonal: Aula {
 
     let nome: String
